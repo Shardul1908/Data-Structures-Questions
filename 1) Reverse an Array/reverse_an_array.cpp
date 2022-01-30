@@ -34,10 +34,10 @@ int main() {
 			last--;
 		}
 		
-		cout << "Array after reversal:";
+		cout << "Array after reversal: ";
 		for(int i = 0;i<n;i++) {
-                        cout << arr[i] << " ";
-                }
+            cout << arr[i] << " ";
+        }
 		cout << "\n";
 
 	}
