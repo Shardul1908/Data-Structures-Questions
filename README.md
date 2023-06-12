@@ -1,2 +1,2 @@
-# DCS
-All 450 Questions by Babbar
+# Data Structure Questions
+All Questions solved on Leetcode
