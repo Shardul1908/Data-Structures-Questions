@@ -22,7 +22,7 @@
 </pre>
 
 <p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+<p><strong>Constraint:</strong></p>
 
 <ul>
 	<li>The tree consists only of the root, its left child, and its right child.</li>
