@@ -11,24 +11,26 @@
  */
 class Solution {
 public:
-    int rangeSumBST(TreeNode* root, int low, int high) {
-        int sum = 0;
-        rangeSumBST_util(root, low, high, sum);
+    TreeNode* increasingBST(TreeNode* root) {
+        TreeNode* dummy = new TreeNode(-1);
+        TreeNode* prev = dummy;
 
-        return sum;
+        inorderTraversal(root, prev);
+
+        return dummy->right;
     }
 
-    void rangeSumBST_util(TreeNode* root, int low, int high, int& sum) {
+    void inorderTraversal(TreeNode* root, TreeNode*& prev) {
         if(root == nullptr) {
             return;
         }
-   
-        if(root->val >= low && root->val <= high) {
-            sum += root->val;
-        }
+        
+        inorderTraversal(root->left,prev);
 
-        rangeSumBST_util(root->left, low, high, sum);
-        rangeSumBST_util(root->right, low, high, sum);
+        root->left = nullptr;
+        prev->right = root;
+        prev = root;
 
+        inorderTraversal(root->right,prev);
     }
 };
