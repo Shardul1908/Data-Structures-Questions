@@ -15,10 +15,10 @@ public:
         if(root == nullptr || root->val == val) {
             return root;
         }
-        if(root->val < val) {
+        else if(root->val < val) {
             return searchBST(root->right,val);
         }
-        if(root->val > val) {
+        else if(root->val > val) {
             return searchBST(root->left,val);   
         }
 
