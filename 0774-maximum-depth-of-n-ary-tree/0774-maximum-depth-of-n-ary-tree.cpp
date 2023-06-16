@@ -25,14 +25,15 @@ public:
             return 0;
         }
 
-        vector<int> vec_max_depth;
+        int max_depth = -1;
         for(int i = 0; i < root->children.size(); i++) {
-            vec_max_depth.push_back(maxDepth(root->children[i]));
+            int curr_depth = maxDepth(root->children[i]);
+            max_depth = max(curr_depth, max_depth);
         }
 
-        if(vec_max_depth.size() == 0) {
+        if(max_depth == -1) {
             return 1;
         }
-        return (*max_element(vec_max_depth.begin(), vec_max_depth.end()) + 1);
+        return (max_depth + 1);
     }
 };
