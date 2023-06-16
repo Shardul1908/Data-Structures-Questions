@@ -24,16 +24,14 @@ public:
             return;
         }
         if(root->left == nullptr && root->right == nullptr) {
-            string str = to_string(root->val);
-            path.append(str);
+            path += to_string(root->val);
             res.push_back(path);
             return;
         }
         
-        string str = to_string(root->val);
-        path.append(str);
-        path.append("->");
-        
+        path += to_string(root->val);
+        path += "->";
+
         binaryTreePaths_util(root->left, path, res);
         binaryTreePaths_util(root->right, path, res);
         
