@@ -12,27 +12,27 @@
 class Solution {
 public:
     int deepestLeavesSum(TreeNode* root) {
-        unordered_map<int, int> mp;
-        int max_depth = deepestLeavesSum_util(root, mp, 0);
-        
-        return mp[max_depth - 1];
-    }
+        int res = 0;
 
-    int deepestLeavesSum_util(TreeNode* root, unordered_map<int,int>& mp, int depth) {
-        if(root == nullptr) {
-            return 0;
-        }
-        if(root->left == nullptr && root->right == nullptr) {
-            if(mp.find(depth) == mp.end()) {
-                mp[depth] = root->val;
-            }else {
-                mp[depth] += root->val;
+        queue<TreeNode*> que;
+        que.push(root);
+        while(!que.empty()) {
+            int level_size = que.size();
+            res = 0;
+
+            for(int i = 0;i < level_size;i++) {
+                TreeNode* curr = que.front();
+                que.pop();
+
+                res += curr->val;
+                if(curr->left != nullptr)
+                    que.push(curr->left);
+                if(curr->right != nullptr)
+                    que.push(curr->right);
             }
-        }   
+        }
 
-        int leftDepth = deepestLeavesSum_util(root->left, mp, depth + 1);
-        int rightDepth = deepestLeavesSum_util(root->right, mp , depth + 1);
+        return res;
 
-        return (max(leftDepth, rightDepth) + 1);
     }
 };
